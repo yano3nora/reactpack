@@ -1,0 +1,35 @@
+html {
+  height: 100%;
+
+  body   {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+
+    header {
+      background-color: $dark;
+      width: 100%;
+    }
+
+    main   {
+      flex-shrink: 0;
+      padding-bottom: $spacer * 3;
+      padding-top: $spacer;
+      position: relative;
+    }
+
+    aside  {
+      flex-shrink: 0;
+      position: relative;
+    }
+
+    footer {
+      background-color: $light;
+      border-top: 1px solid $gray-300;
+      margin-top: auto;
+      padding-bottom: $spacer;
+      padding-top: $spacer;
+    }
+  }
+}
