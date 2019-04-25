@@ -136,6 +136,8 @@ module.exports = {
       cors: true,
       reloadDelay: 500,  // edit
       injectChanges: true,
+      injectCss: true,
+      open: false,
       watchOptions: {
         awaitWriteFinish : true,
         ignoreInitial: true,
