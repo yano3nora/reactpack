@@ -1,9 +1,8 @@
-React.js + webpack
+React x Redux on Webpack.
 ===
 
 ## Requirements
-- nodejs
-  - browser-sync
+- nodejs >= v8.*
 
 ## Getting Started
 ```

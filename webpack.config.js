@@ -2,15 +2,17 @@ const path                 = require('path')
 const glob                 = require('glob')
 const globImporter         = require('node-sass-glob-importer')
 const webpack              = require('webpack')
+const cssnano              = require('cssnano')
 const autoprefixer         = require('autoprefixer')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const BrowserSyncPlugin    = require('browser-sync-webpack-plugin')
 
 module.exports = {
+  cache: (process.env.npm_lifecycle_event !== 'build'),
   watchOptions: {
-    ignored: ['node_modules'],
+    ignored: ['/vendor/', '/node_modules/'],
   },
-  devtool: process.env.npm_lifecycle_event === 'build'
+  devtool: (process.env.npm_lifecycle_event === 'build')
     ? 'source-map'
     : 'cheap-module-eval-source-map',
   performance: { hints: false },
@@ -46,9 +48,8 @@ module.exports = {
             loader: 'css-loader',
             options: {
               // url: false,  // Deny fetching resource by url().
-              minimize: (process.env.npm_lifecycle_event === 'build'),
               importLoaders: 2,  // For PostCSS + Sass.
-              sourceMap: true,
+              sourceMap: (process.env.npm_lifecycle_event === 'build'),
             },
           },
           {
@@ -56,21 +57,24 @@ module.exports = {
             options: {
               plugins: [
                 autoprefixer({
-                  browsers: ['last 2 versions'],
                   add: true,
                   flexbox: true,
                   grid: true,
                   remove: false,
                 }),
-              ],
-              sourceMap: true,
+              ].concat(
+                (process.env.npm_lifecycle_event === 'build')
+                  ? [cssnano({ autoprefixer: false })]
+                  : []
+              ),
+              sourceMap: (process.env.npm_lifecycle_event === 'build'),
             },
           },
           {
             loader: 'sass-loader',
             options: {
               importer: globImporter(),
-              sourceMap: true,
+              sourceMap: (process.env.npm_lifecycle_event === 'build'),
             },
           },
         ],
@@ -90,20 +94,7 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             presets: [
-              ['@babel/preset-env',
-                {
-                  modules: false,
-                  targets: {
-                    chrome: 69,
-                    firefox: 62,
-                    safari: 12,
-                    edge: 17,
-                    ie: 11,
-                    ios: 10,
-                    android: 7,
-                  },
-                },
-              ],
+              ['@babel/preset-env', { useBuiltIns: 'entry', corejs: 2, modules: false }],
               ['@babel/preset-react'],
             ],
           },
@@ -132,22 +123,17 @@ module.exports = {
     new BrowserSyncPlugin({
       host: 'localhost',
       port: 3000,
-      proxy: 'https://192.168.99.100',  // edit
-      cors: true,
-      reloadDelay: 500,  // edit
-      injectChanges: true,
-      injectCss: true,
       open: false,
-      watchOptions: {
-        awaitWriteFinish : true,
-        ignoreInitial: true,
-        ignored: ['/vendor/', '/node_modules/'],  // edit
+      cors: true,
+      // Edit local server config, or proxy.
+      // proxy: 'https://192.168.99.100',
+      server: {
+        baseDir: 'public',
+        index: 'index.html',
       },
-      files: [  // edit
-        'app/**/*.rb',
-        'app/**/*.erb',
-        'config/**/*.rb',
-        'test/**/*.rb',
+      // Edit files config.
+      files: [
+        'public/**/*.html',
         'src/**/*.js',
         'public/css/*.css',
       ],
