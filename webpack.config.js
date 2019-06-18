@@ -14,7 +14,7 @@ module.exports = {
   },
   devtool: (process.env.npm_lifecycle_event === 'build')
     ? 'source-map'
-    : 'cheap-module-eval-source-map',
+    : 'inline-source-map',
   performance: { hints: false },
   entry: {
     bundle: [
@@ -91,7 +91,7 @@ module.exports = {
         test: /\.js$|\.jsx$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader',
+          loader: 'babel-loader?cacheDirectory',
           options: {
             presets: [
               ['@babel/preset-env', { useBuiltIns: 'entry', corejs: 2, modules: false }],
@@ -131,6 +131,9 @@ module.exports = {
         baseDir: 'public',
         index: 'index.html',
       },
+      watchOptions: {
+        awaitWriteFinish : true,
+      },
       // Edit files config.
       files: [
         'public/**/*.html',
@@ -139,6 +142,7 @@ module.exports = {
       ],
     },
     {
+      injectCss: true,
       reload: false,
     }),
   ],

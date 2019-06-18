@@ -1,4 +1,4 @@
-React x Redux on Webpack.
+Webpack boilerplate for React x Redux with Redux Saga.
 ===
 
 ## Requirements
@@ -6,7 +6,7 @@ React x Redux on Webpack.
 
 ## Getting Started
 ```
-$ npm install
+$ npm ci
 
 $ npm run watch  # Build & Watch.
 $ npm run build  # Build & Minify.
@@ -19,4 +19,19 @@ $ npm i -D ${package}  # Install as --save-dev
 
 $ npm remove -S ${package}  # Uninstall as --save
 $ npm remove -D ${package}  # Uninstall as --save-dev
+```
+
+## Composition
+```
+src/
+  bases/
+    - logger-middleware.js  // Middlewares for store.
+    - async-middleware.js
+  components/
+    todo/
+      - todo-container.js   // Provider container using modules.
+      - todo-list.js        // Pure component children.
+      - todo-stat.js
+  modules/
+    - todo-module.js        // Reducers and Actions for container component.
 ```
