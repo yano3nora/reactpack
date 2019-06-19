@@ -33,5 +33,7 @@ src/
       - todo-list.js        // Pure component children.
       - todo-stat.js
   modules/
-    - todo-module.js        // Reducers and Actions for container component.
+    todo/
+      - todo-modules.js     // Reducers and Actions for container component.
+      - todo-sagas.js       // Saga tasks
 ```

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { TodoModule } from 'modules/todo-module'
+import { TodoModules } from 'modules/todo/todo-modules'
 
 export const TodoInput = (props) => {
   //
@@ -11,15 +11,15 @@ export const TodoInput = (props) => {
 
   const handleClickAdd = () => {
     if (value) {
-      dispatch(TodoModule.actions.addTodo(value))
+      dispatch(TodoModules.actions.addTodo(value))
       setValue('')
     }
   }
 
   return (
-    <div>
-      <input type="text" onChange={e => setValue(e.target.value)} value={value} />
-      <button onClick={handleClickAdd}>ADD</button>
+    <div className="uk-flex">
+      <input type="text" className="uk-input" onChange={e => setValue(e.target.value)} value={value} />
+      <button className="uk-button" onClick={handleClickAdd}>ADD</button>
     </div>
   )
 }
