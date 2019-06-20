@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { TodoModules } from 'modules/todo/todo-modules'
+import { TodoModule } from 'modules/todo/todo-module'
 
 export const TodoInput = (props) => {
   //
@@ -17,7 +17,7 @@ export const TodoInput = (props) => {
 
   const handleClickAdd = () => {
     if (value) {
-      dispatch(TodoModules.actions.addTodo(value))
+      dispatch(TodoModule.actions.addTodo(value))
       setValue('')
     }
   }

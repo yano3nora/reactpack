@@ -1,6 +1,6 @@
 import { createSlice } from 'redux-starter-kit'
 
-export const TodoModules = createSlice({
+export const TodoModule = createSlice({
   slice: 'todo',
   initialState: {
     list:  [],  // Refs as state.todo.list from component by useSelector().

@@ -13,14 +13,14 @@ import { TodoList }  from 'components/todo/todo-list'
 import { TodoInput } from 'components/todo/todo-input'
 
 // My module.
-import { TodoModules } from 'modules/todo/todo-modules'
+import { TodoModule } from 'modules/todo/todo-module'
 
 // Generate store and saga worker.
 const Saga  = createSagaMiddleware()
 const store = configureStore({
   // Adding reducers and middlewares, if extends.
   reducer: combineReducers({
-    todo: TodoModules.reducer,
+    todo: TodoModule.reducer,
   }),
   middleware: (process.env.NODE_ENV === 'development')
     ? [...getDefaultMiddleware(), Saga, Logger]
