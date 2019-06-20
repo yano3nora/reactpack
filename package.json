@@ -62,7 +62,6 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.0.0",
-    "font-awesome": "^4.7.0",
     "intersection-observer": "^0.7.0",
     "moment": "^2.23.0",
     "moment-timezone": "^0.5.23",
