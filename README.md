@@ -26,7 +26,7 @@ $ npm remove -D ${package}  # Uninstall as --save-dev
 src/
   bases/
     - logger-middleware.js  // Middlewares for store.
-    - async-middleware.js
+    - saga-middleware.js
   components/
     todo/
       - todo-container.js   // Provider container using modules.
@@ -35,5 +35,5 @@ src/
   modules/
     todo/
       - todo-modules.js     // Reducers and Actions for container component.
-      - todo-sagas.js       // Saga tasks
+      - todo-sagas.js       // Saga tasks for asynchronous process.
 ```
