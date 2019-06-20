@@ -107,13 +107,7 @@ module.exports = {
       filename: '../css/[name].css',
     }),
     new webpack.ProvidePlugin({
-      $: 'jquery',
-      jQuery: 'jquery',
       moment: 'moment',
-      React: 'react',
-      ReactDOM: 'react-dom',
-      Component: ['react', 'Component'],
-      PropTypes: 'prop-types',
     }),
     new webpack.optimize.AggressiveMergingPlugin(),
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
