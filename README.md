@@ -31,7 +31,7 @@ src/
     todo/
       - todo-container.js   // Provider container using modules.
       - todo-list.js        // Pure component children.
-      - todo-stat.js
+      - todo-input.js
   modules/
     todo/
       - todo-modules.js     // Reducers and Actions for container component.
