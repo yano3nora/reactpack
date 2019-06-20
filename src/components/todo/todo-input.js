@@ -9,6 +9,12 @@ export const TodoInput = (props) => {
   const [value, setValue] = useState('')
   const dispatch          = useDispatch()
 
+  const handleKeyUp = (e) => {
+    if (e.keyCode === 13) {  // enter, return.
+      handleClickAdd()
+    }
+  }
+
   const handleClickAdd = () => {
     if (value) {
       dispatch(TodoModules.actions.addTodo(value))
@@ -18,7 +24,13 @@ export const TodoInput = (props) => {
 
   return (
     <div className="uk-flex">
-      <input type="text" className="uk-input" onChange={e => setValue(e.target.value)} value={value} />
+      <input
+        type="text"
+        className="uk-input"
+        onKeyUp={handleKeyUp}
+        onChange={e => setValue(e.target.value)}
+        value={value}
+      />
       <button className="uk-button" onClick={handleClickAdd}>ADD</button>
     </div>
   )

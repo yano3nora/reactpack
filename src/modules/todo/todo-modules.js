@@ -45,6 +45,7 @@ export const TodoModules = createSlice({
      * @param action - type: 'todo/setFetchedLink', payload: { id: int, link: string }
      */
     setFetchedLink: (state, action) => {
+      console.log(action)
       state.list.forEach(todo => {
         todo.link = (todo.id === action.payload.id) ? action.payload.link : todo.link
       })

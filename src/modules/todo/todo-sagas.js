@@ -1,8 +1,9 @@
 // @see https://redux-saga.js.org/docs/api/
 import { takeLatest, call, select, put } from 'redux-saga/effects'
+import { TodoModules } from 'modules/todo/todo-modules'
 
 export function * watchAddTodo () {
-  yield takeLatest('todo/addTodo', fetchQiitaLinkTask)
+  yield takeLatest(TodoModules.actions.addTodo, fetchQiitaLinkTask)
 }
 
 function * fetchQiitaLinkTask (action) {
@@ -16,10 +17,7 @@ function * fetchQiitaLinkTask (action) {
     console.log('Qiita link not found.')
     return
   }
-  yield put({
-    type: 'todo/setFetchedLink',
-    payload: { id: nowId, link: payload },
-  })
+  yield put(TodoModules.actions.setFetchedLink({ id: nowId, link: payload }))
 }
 
 function fetchQiitaLink (payload) {
