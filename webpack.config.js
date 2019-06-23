@@ -122,7 +122,10 @@ module.exports = {
       open: false,
       cors: true,
       // Edit local server config, or proxy.
-      // proxy: 'https://192.168.99.100',
+      // proxy: {
+      //   target: 'https://192.168.99.100',
+      //   cookies: { stripeDomain: false },
+      // },
       server: {
         baseDir: 'public',
         index: 'index.html',
