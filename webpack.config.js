@@ -58,12 +58,7 @@ module.exports = {
             loader: 'postcss-loader',
             options: {
               plugins: [
-                autoprefixer({
-                  add: true,
-                  flexbox: true,
-                  grid: true,
-                  remove: false,
-                }),
+                autoprefixer(),
               ].concat(
                 (process.env.npm_lifecycle_event === 'build')
                   ? [cssnano({ autoprefixer: false })]
@@ -125,6 +120,7 @@ module.exports = {
       // proxy: {
       //   target: 'https://192.168.99.100',
       //   cookies: { stripeDomain: false },
+      //   ws: false,  // Fix when app using websocket.
       // },
       server: {
         baseDir: 'public',
