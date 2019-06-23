@@ -1,8 +1,8 @@
 // @see https://redux-saga.js.org/docs/api/
 import { takeLatest, call, select, put } from 'redux-saga/effects'
-import { TodoModule } from 'modules/todo/todo-module'
+import { TodoModule } from 'modules/todo-module'
 
-export function * watchAddTodo () {
+export function * TodoSagas () {
   yield takeLatest(TodoModule.actions.addTodo, fetchQiitaLinkTask)
 }
 

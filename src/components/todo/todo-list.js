@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { TodoModule } from 'modules/todo/todo-module'
+import { TodoModule } from 'modules/todo-module'
 
 export const TodoList = (props) => {
   const dispatch = useDispatch()

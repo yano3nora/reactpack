@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { TodoModule } from 'modules/todo/todo-module'
+import { TodoModule } from 'modules/todo-module'
 
 export const TodoInput = (props) => {
   //

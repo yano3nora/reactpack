@@ -4,7 +4,7 @@
  */
 import { createLogger } from 'redux-logger'
 
-export const Logger = createLogger({
+export const AppLogger = createLogger({
   diff: true,
   duration: true,
 })

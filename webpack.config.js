@@ -20,9 +20,10 @@ module.exports = {
     bundle: [
       './src/index.scss',
       './src/index.js',
-      ...glob.sync('./src/bases/**/*.js',      { ignored: './**/_*.js' }),
-      ...glob.sync('./src/components/**/*.js', { ignored: './**/_*.js' }),
-      ...glob.sync('./src/modules/**/*.js',    { ignored: './**/_*.js' }),
+      ...glob.sync('./src/bases/**/*.js',       { ignored: './**/_*.js' }),
+      ...glob.sync('./src/components/**/*.js',  { ignored: './**/_*.js' }),
+      ...glob.sync('./src/middlewares/**/*.js', { ignored: './**/_*.js' }),
+      ...glob.sync('./src/modules/**/*.js',     { ignored: './**/_*.js' }),
     ],
   },
   output: {
@@ -33,6 +34,7 @@ module.exports = {
     alias: {
       bases:       path.resolve(__dirname, 'src/bases'),
       components:  path.resolve(__dirname, 'src/components'),
+      middlewares: path.resolve(__dirname, 'src/middlewares'),
       modules:     path.resolve(__dirname, 'src/modules'),
     },
     extensions: ['.wasm', '.mjs', '.js', '.json', '.jsx', '.css', '.scss'],
