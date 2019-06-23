@@ -7,8 +7,9 @@ export function * TodoSagas () {
 }
 
 function * fetchQiitaLinkTask (action) {
+  const qiitaApi           = yield select(state => state.app.qiitaApi)
   const { nowId }          = yield select(state => state.todo)
-  const { payload, error } = yield call(fetchQiitaLink, action.payload)
+  const { payload, error } = yield call(fetchQiitaLink, qiitaApi, action.payload)
   if (error) {
     console.error(error)
     return
@@ -20,8 +21,8 @@ function * fetchQiitaLinkTask (action) {
   yield put(TodoModule.actions.setFetchedLink({ id: nowId, link: payload }))
 }
 
-function fetchQiitaLink (payload) {
-  return fetch(`https://qiita.com/api/v2/items?page=1&per_page=1&query=title:${payload}`)
+function fetchQiitaLink (qiitaApi, payload) {
+  return fetch(`${qiitaApi}${payload}`)
     .then((response) => {
       if (!response.ok) {
         throw new Error(response.statusText)
