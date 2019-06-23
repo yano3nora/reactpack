@@ -20,7 +20,6 @@ export const Store = configureStore({
      *
      * user:    UserModule.reducer,
      * article: ArticleModule.reducer,
-     *
      */
   }),
   middleware: (process.env.NODE_ENV === 'development')
