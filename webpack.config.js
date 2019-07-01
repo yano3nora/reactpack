@@ -126,6 +126,7 @@ module.exports = {
         baseDir: 'public',
         index: 'index.html',
       },
+      reloadDelay: 0,
       watchOptions: {
         awaitWriteFinish : true,
       },
