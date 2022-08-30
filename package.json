@@ -64,7 +64,7 @@
     "@babel/polyfill": "^7.0.0",
     "intersection-observer": "^0.7.0",
     "moment": "^2.23.0",
-    "moment-timezone": "^0.5.23",
+    "moment-timezone": "^0.5.35",
     "object-fit-images": "^3.2.4",
     "prop-types": "^15.6.2",
     "react": "^16.8.6",
